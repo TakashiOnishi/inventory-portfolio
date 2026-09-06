@@ -73,6 +73,9 @@ export default function Home() {
         >
           Googleでログイン
         </button>
+        <p className="max-w-sm text-center text-xs text-text-subtle">
+          ※ポートフォリオ用の公開デモです。データは全ログインユーザーで共有され、予告なくリセットされる場合があります。
+        </p>
       </main>
     );
   }
