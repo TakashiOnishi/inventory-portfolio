@@ -11,6 +11,9 @@ https://inventory-portfolio-one.vercel.app で公開しています。「小規�
 設計のため、Googleログインさえすれば**誰でも全品目を編集・削除できます**（所有者の概念なし）。
 訪問者ごとの分離もありません。デモ用途のため予告なくデータをリセットする場合があります。
 
+[プライバシーポリシー](https://inventory-portfolio-one.vercel.app/privacy) ／
+[利用規約](https://inventory-portfolio-one.vercel.app/terms)
+
 ## 主な機能
 
 - 🔐 Googleアカウントでのログイン（Firebase Authentication）

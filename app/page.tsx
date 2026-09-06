@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "@/lib/auth-context";
 import { Header } from "@/components/Header";
@@ -75,6 +76,15 @@ export default function Home() {
         </button>
         <p className="max-w-sm text-center text-xs text-text-subtle">
           ※ポートフォリオ用の公開デモです。データは全ログインユーザーで共有され、予告なくリセットされる場合があります。
+        </p>
+        <p className="text-xs text-text-subtle">
+          <Link href="/privacy" className="underline hover:text-text-muted">
+            プライバシーポリシー
+          </Link>
+          {" ・ "}
+          <Link href="/terms" className="underline hover:text-text-muted">
+            利用規約
+          </Link>
         </p>
       </main>
     );
