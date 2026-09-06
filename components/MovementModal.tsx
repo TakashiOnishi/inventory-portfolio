@@ -41,10 +41,10 @@ export function MovementModal({ item, onClose, onSubmit }: Props) {
   };
 
   return (
-    <div className="fixed inset-0 z-10 flex items-center justify-center bg-black/40 p-4">
-      <div className="w-full max-w-sm rounded-lg bg-white p-5 shadow-xl">
+    <div className="fixed inset-0 z-10 flex items-center justify-center bg-backdrop p-4">
+      <div className="w-full max-w-sm rounded-lg bg-surface p-5 shadow-xl">
         <h2 className="mb-1 text-base font-semibold">在庫を更新</h2>
-        <p className="mb-4 text-sm text-slate-500">
+        <p className="mb-4 text-sm text-text-muted">
           {item.name}（現在 {item.quantity}{item.unit}）
         </p>
 
@@ -55,8 +55,8 @@ export function MovementModal({ item, onClose, onSubmit }: Props) {
               onClick={() => setType(o.value)}
               className={`flex-1 rounded-md border px-3 py-2 text-sm ${
                 type === o.value
-                  ? "border-blue-600 bg-blue-50 text-blue-700"
-                  : "border-slate-300"
+                  ? "border-brand-soft-border bg-brand-soft text-brand"
+                  : "border-border-default"
               }`}
             >
               {o.label}
@@ -70,7 +70,7 @@ export function MovementModal({ item, onClose, onSubmit }: Props) {
           min={0}
           value={amount}
           onChange={(e) => setAmount(Number(e.target.value))}
-          className="mb-4 w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+          className="mb-4 w-full rounded-md border border-border-default bg-surface px-3 py-2 text-sm"
         />
 
         <label className="mb-1 block text-sm font-medium">理由・メモ</label>
@@ -78,22 +78,22 @@ export function MovementModal({ item, onClose, onSubmit }: Props) {
           value={reason}
           onChange={(e) => setReason(e.target.value)}
           placeholder="例: 発注入荷 / 部署払い出し / 棚卸差異"
-          className="mb-4 w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+          className="mb-4 w-full rounded-md border border-border-default bg-surface px-3 py-2 text-sm"
         />
 
-        {error && <p className="mb-3 text-sm text-red-600">{error}</p>}
+        {error && <p className="mb-3 text-sm text-danger">{error}</p>}
 
         <div className="flex justify-end gap-2">
           <button
             onClick={onClose}
-            className="rounded-md border border-slate-300 px-4 py-2 text-sm hover:bg-slate-100"
+            className="rounded-md border border-border-default px-4 py-2 text-sm hover:bg-surface-muted"
           >
             キャンセル
           </button>
           <button
             onClick={handleSubmit}
             disabled={saving}
-            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-on-primary hover:bg-primary-hover disabled:opacity-50"
           >
             {saving ? "保存中…" : "適用"}
           </button>

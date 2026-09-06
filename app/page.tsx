@@ -58,18 +58,18 @@ export default function Home() {
     }
   }, []);
 
-  if (loading) return <div className="p-8 text-slate-500">読み込み中…</div>;
+  if (loading) return <div className="p-8 text-text-muted">読み込み中…</div>;
 
   if (!user) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-6 p-8">
         <div className="text-center">
           <h1 className="text-2xl font-semibold">📦 Inventory Manager</h1>
-          <p className="mt-2 text-slate-500">在庫管理アプリ</p>
+          <p className="mt-2 text-text-muted">在庫管理アプリ</p>
         </div>
         <button
           onClick={() => signIn()}
-          className="rounded-md bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
+          className="rounded-md bg-primary px-6 py-3 font-medium text-on-primary hover:bg-primary-hover"
         >
           Googleでログイン
         </button>
@@ -90,7 +90,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setModal({ kind: "create" })}
-              className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+              className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-on-primary hover:bg-primary-hover"
             >
               ＋ 品目を追加
             </button>
@@ -99,29 +99,29 @@ export default function Home() {
                 onClick={() => setOnlyLow((v) => !v)}
                 className={`rounded-md border px-3 py-2 text-sm ${
                   onlyLow
-                    ? "border-amber-500 bg-amber-50 text-amber-700"
-                    : "border-slate-300"
+                    ? "border-warning-soft-border bg-warning-soft text-warning"
+                    : "border-border-default"
                 }`}
               >
                 ⚠️ 低在庫 {lowCount} 件{onlyLow ? "（解除）" : "のみ表示"}
               </button>
             )}
           </div>
-          <span className="text-sm text-slate-500">全 {items.length} 品目</span>
+          <span className="text-sm text-text-muted">全 {items.length} 品目</span>
         </div>
 
         {dataError && (
-          <p className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{dataError}</p>
+          <p className="mb-4 rounded-md bg-danger-soft p-3 text-sm text-danger">{dataError}</p>
         )}
 
         {items.length === 0 && !dataError ? (
-          <p className="text-slate-500">
+          <p className="text-text-muted">
             品目がありません。<code>npm run seed</code> か「品目を追加」で登録してください。
           </p>
         ) : (
-          <div className="overflow-x-auto rounded-lg border border-slate-200 bg-white">
+          <div className="overflow-x-auto rounded-lg border border-border-default bg-surface">
             <table className="w-full min-w-[720px] text-sm">
-              <thead className="bg-slate-50 text-left text-slate-500">
+              <thead className="bg-surface-muted text-left text-text-muted">
                 <tr>
                   <th className="p-3">品名 / SKU</th>
                   <th className="p-3">カテゴリ</th>
@@ -135,38 +135,38 @@ export default function Home() {
                 {shown.map((item) => {
                   const low = isLowStock(item.quantity, item.minQuantity);
                   return (
-                    <tr key={item.id} className="border-t border-slate-100">
+                    <tr key={item.id} className="border-t border-border-subtle">
                       <td className="p-3">
                         <div className="font-medium">{item.name}</div>
-                        <div className="text-xs text-slate-400">{item.sku}</div>
+                        <div className="text-xs text-text-subtle">{item.sku}</div>
                       </td>
-                      <td className="p-3 text-slate-600">{item.category || "—"}</td>
-                      <td className="p-3 text-slate-600">{item.location || "—"}</td>
+                      <td className="p-3 text-text-muted">{item.category || "—"}</td>
+                      <td className="p-3 text-text-muted">{item.location || "—"}</td>
                       <td className="p-3 text-right">
-                        <span className={low ? "font-semibold text-amber-600" : ""}>
+                        <span className={low ? "font-semibold text-warning" : ""}>
                           {item.quantity}
                           {item.unit}
                         </span>
                         {low && <span className="ml-1" title="低在庫">⚠️</span>}
                       </td>
-                      <td className="p-3 text-right text-slate-500">{item.minQuantity}</td>
+                      <td className="p-3 text-right text-text-muted">{item.minQuantity}</td>
                       <td className="p-3 text-right">
                         <div className="flex justify-end gap-2 text-xs">
                           <button
                             onClick={() => setModal({ kind: "move", item })}
-                            className="rounded border border-slate-300 px-2 py-1 hover:bg-slate-50"
+                            className="rounded border border-border-default px-2 py-1 hover:bg-surface-muted"
                           >
                             入出庫
                           </button>
                           <button
                             onClick={() => setModal({ kind: "history", item })}
-                            className="rounded border border-slate-300 px-2 py-1 hover:bg-slate-50"
+                            className="rounded border border-border-default px-2 py-1 hover:bg-surface-muted"
                           >
                             履歴
                           </button>
                           <button
                             onClick={() => setModal({ kind: "edit", item })}
-                            className="rounded border border-slate-300 px-2 py-1 hover:bg-slate-50"
+                            className="rounded border border-border-default px-2 py-1 hover:bg-surface-muted"
                           >
                             編集
                           </button>
@@ -177,7 +177,7 @@ export default function Home() {
                                 await reload();
                               }
                             }}
-                            className="rounded border border-slate-300 px-2 py-1 text-red-600 hover:bg-red-50"
+                            className="rounded border border-border-default px-2 py-1 text-danger hover:bg-danger-soft"
                           >
                             削除
                           </button>

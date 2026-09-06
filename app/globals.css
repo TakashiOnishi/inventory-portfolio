@@ -1,26 +1,101 @@
 @import "tailwindcss";
 
+/*
+ * 配色は RECEPTIONIST（https://receptionist.jp）を参考にしたブランドトークン。
+ * コーラル(primary)は画面につき主要CTA1箇所のみ、ティール(brand)はリンク・選択状態など
+ * それ以外のブランド色として使う、という向こうのサイトの配分方針を踏襲している。
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --surface-muted: #eaf6f9;
+  --text: #1f2933;
+  --text-muted: #5b6b79;
+  --text-subtle: #93a3b1;
+  --border: #dbe4ea;
+  --border-subtle: #e8eef2;
+  --backdrop: rgba(17, 45, 72, 0.45);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --primary: #ff6262;
+  --primary-hover: #e14e4e;
+  --on-primary: #ffffff;
+
+  --brand: #0098bb;
+  --brand-hover: #007a99;
+  --brand-soft: #eaf6f9;
+  --brand-soft-border: #4fb3d6;
+
+  --danger: #dc2626;
+  --danger-soft: #fef2f2;
+  --warning: #d97706;
+  --warning-soft: #fffbeb;
+  --warning-soft-border: #f59e0b;
+  --success: #16a34a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #0b1e30;
+    --surface: #112d48;
+    --surface-muted: #16385a;
+    --text: #eef4f8;
+    --text-muted: #9fb3c4;
+    --text-subtle: #6c8298;
+    --border: #25476b;
+    --border-subtle: #1c3956;
+    --backdrop: rgba(3, 12, 20, 0.6);
+
+    --primary: #ff7a7a;
+    --primary-hover: #ff9090;
+    --on-primary: #ffffff;
+
+    --brand: #5cc9e8;
+    --brand-hover: #7ad4ee;
+    --brand-soft: #123a52;
+    --brand-soft-border: #4fb3d6;
+
+    --danger: #f87171;
+    --danger-soft: #3b1418;
+    --warning: #fbbf24;
+    --warning-soft: #3a2e0a;
+    --warning-soft-border: #f59e0b;
+    --success: #4ade80;
   }
 }
 
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-subtle: var(--text-subtle);
+  --color-border-default: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-backdrop: var(--backdrop);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--on-primary);
+
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-soft-border: var(--brand-soft-border);
+
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-soft-border: var(--warning-soft-border);
+  --color-success: var(--success);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
 }
